@@ -1,0 +1,5 @@
+### The configure file.
+
+For the compilation on Piz-Daint, and in general on Cray machine, 
+use the provided configure file as it is in this folder. 
+It contains fixings to manage the ftn wrapper and link to intel compilers.
