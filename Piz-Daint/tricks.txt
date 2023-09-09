@@ -1,4 +1,5 @@
-### The configure file.
+### The configure file. Try this if you have problem in the configuration step,
+### for example if you do not find the compilers.
 
 For the compilation on Piz-Daint, and in general on Cray machine, 
 use the provided configure file as it is in this folder. 
