@@ -1,0 +1,5 @@
+if errors with some external libraries:
+(1) cd external; ./initialize... tab complete it
+(2) comment the second if block(the git one) in the module function of install/install_utils.
+
+This is due to a git-qe problem.
