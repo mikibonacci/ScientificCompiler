@@ -1,4 +1,4 @@
-# compile_yambo_everywhere
+# compile_yambo
 Collection of configuration scripts, tricks and other stuff on how to compile and set up a running yambo on different machines.
 
 ## File format
