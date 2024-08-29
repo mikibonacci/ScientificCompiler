@@ -1,4 +1,4 @@
-module load intel/19.5
+module load intel/22.2
 
 #don't know if work internode wise
 
