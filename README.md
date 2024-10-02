@@ -1,5 +1,6 @@
-# compile_yambo
-Collection of configuration scripts, tricks and other stuff on how to compile and set up a running yambo on different machines.
+# Compile your quantum engine
+Collection of configuration scripts, tricks and other stuff on how to compile and set up different quantum engines on different machines.
+This is suited for stuff which is not on conda-forge, otherwise just install from there.
 
 ## File format
 

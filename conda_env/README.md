@@ -30,6 +30,8 @@ Download the Quantum ESPRESSO source from gitlab
 ./install/configure --with-hdf5 --enable-openmp 
 ```
 
+If you have problems with blacs, just deactivate scalapack support (as done below for kcp).
+
 ## How to install Yambo 
 
 A comment on the configure: conda install the dynamic netcdf lib (you know it noticing that in the lib, it is *.so and not *.a, the latter being the static version. Yambo by default does not find the dynamical one, you have to explicitely tell him. like in the line below.)
@@ -68,4 +70,30 @@ The vader shared memory BTL will fall back on another single-copy
 mechanism if one is available. This may result in lower performance.
 
   Local host: 6f222c4867e7
+```
+
+# How to compile `kcp.x`
+
+Download the [last version](https://github.com/epfl-theos/koopmans-kcp.git) of the code. 
+I suppose you are compiling the code in the same conda environment described above. 
+
+```bash
+git clone https://github.com/epfl-theos/koopmans-kcp.git
+cd koopmans-kcp
+export LD_LIBRARY_PATH=/home/jovyan/.conda/envs/codes/lib
+./configure BLAS_LIBS="-L/home/jovyan/.conda/envs/codes/lib -lopenblas" LAPACK_LIBS="-L/home/jovyan/.conda/envs/codes/lib -llapack" FFT_LIBS="-L/home/jovyan/.conda/envs/codes/lib -lfftw3" --with-scalapack=no MPIF90=mpif90
+```
+
+Then modify the newly generated `make.sys` file:
+
+```bash
+IFLAGS         = -I/home/jovyan/codes/koopmans-kcp/include -I/home/jovyan/codes/koopmans-kcp/iotk/include
+MODFLAGS       = -I./  -I/home/jovyan/codes/koopmans-kcp/Modules  -I/home/jovyan/codes/koopmans-kcp/iotk/src
+```
+
+Otherwise it will not find the modules and iotk library.
+Then:
+
+```bash
+make kcp # not in parallel.
 ```
