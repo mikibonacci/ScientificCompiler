@@ -80,9 +80,17 @@ I suppose you are compiling the code in the same conda environment described abo
 ```bash
 git clone https://github.com/epfl-theos/koopmans-kcp.git
 cd koopmans-kcp
-export LD_LIBRARY_PATH=/home/jovyan/.conda/envs/codes/lib
-./configure BLAS_LIBS="-L/home/jovyan/.conda/envs/codes/lib -lopenblas" LAPACK_LIBS="-L/home/jovyan/.conda/envs/codes/lib -llapack" FFT_LIBS="-L/home/jovyan/.conda/envs/codes/lib -lfftw3" --with-scalapack=no MPIF90=mpif90
+export LD_LIBRARY_PATH=/home/jovyan/.conda/envs/codes/lib # this is fundamental
+./configure --with-scalapack=no MPIF90=mpif90
 ```
+
+Before, I was launching `./configure BLAS_LIBS="-L/home/jovyan/.conda/envs/codes/lib -lopenblas" LAPACK_LIBS="-L/home/jovyan/.conda/envs/codes/lib -llapack" FFT_LIBS="-L/home/jovyan/.conda/envs/codes/lib -lfftw3" --with-scalapack=no MPIF90=mpif90`, but in this way it does not put 
+
+```bash
+DFLAGS         =  -D__GFORTRAN -D__FFTW3 -D__MPI -D__PARA
+```
+
+in the make.sys... is like it is not putting the flags because you don't allow a checking, you provide explicitely the path.
 
 Then modify the newly generated `make.sys` file:
 
