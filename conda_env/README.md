@@ -120,3 +120,7 @@ and add this line:
 ```bash
 localhost slots=24
 ```
+
+# If not enough memory... vader something
+
+rm /dev/shm/vader*
