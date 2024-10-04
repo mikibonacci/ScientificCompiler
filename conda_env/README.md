@@ -105,3 +105,18 @@ Then:
 ```bash
 make kcp # not in parallel.
 ```
+
+# How to solve the *There are not enough slots available in the system...*
+
+This happens when we run *mpirun* asking for more processes than the available slots. 
+Just look for the `/home/jovyan/.conda/envs/codes/etc/openmpi-default-hostfile`:
+
+```bash
+find /home/jovyan/.conda/envs/codes/* -name *hostfile
+```
+
+and add this line:
+
+```bash
+localhost slots=24
+```
