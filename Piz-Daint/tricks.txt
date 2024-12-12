@@ -6,3 +6,9 @@
 For the compilation on Piz-Daint, and in general on Cray machine, 
 use the provided configure file as it is in this folder. 
 It contains fixings to manage the ftn wrapper and link to intel compilers.
+
+
+
+QE:
+
+./configure CPP=cpp CC=cc FC=ftn F77=ftn F90=ftn MPICC=cc PFC=ftn 'FPP=cpp -E -traditional'
